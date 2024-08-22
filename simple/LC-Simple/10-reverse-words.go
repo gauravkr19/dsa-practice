@@ -15,7 +15,7 @@ func reverseWords(s string) string {
 	// Trim leading and trailing spaces
 	s = strings.TrimSpace(s)
 
-	// Split the string into words
+	// Split the string into words which is slice of words
 	words := strings.Fields(s) //[a good example]
 	fmt.Println(words)
 
@@ -36,15 +36,15 @@ func main() {
 	fmt.Println(reverseWords("a good   example")) // Output: "example good a"
 
 	fmt.Println("-----Calix Interview---------")
-	fmt.Println(reverseWordsCharsInterview("the sky is blue"))  // Output: "example good a"
+	fmt.Println(reverseWordsCharsInterview("madam"))            // Output: "example good a"
 	fmt.Println(reverseWordsCharsInterview("a good   example")) // Output: "example good a"
 }
 
 // calix - reverse strings
 func reverseWordsCharsInterview(str string) string {
-	words := []byte(str)
-	for i, j := 0, len(words)-1; i < j; i, j = i+1, j-1 {
-		words[i], words[j] = words[j], words[i]
+	chars := []byte(str)
+	for i, j := 0, len(chars)-1; i < j; i, j = i+1, j-1 {
+		chars[i], chars[j] = chars[j], chars[i]
 	}
-	return string(words)
+	return string(chars)
 }

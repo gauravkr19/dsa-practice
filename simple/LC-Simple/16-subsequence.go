@@ -7,6 +7,7 @@ import "fmt"
 // of the characters without disturbing the relative positions of the remaining characters.
 // (i.e., "ace" is a subsequence of "abcde" while "aec" is not).
 
+// when using range ---> for i, s := range t Error: "invalid operation: cannot index s (variable of type rune)""
 func subsequence(s string, t string) bool {
 
 	sIndex := 0

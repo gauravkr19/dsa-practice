@@ -29,6 +29,7 @@ func elementSum(mySlice []int, target int) []int {
 		if idx, found := myMap[complement]; found {
 			return []int{idx, i}
 		}
+		// create a myMap, map[4:0 6:2 9:1, 4:2, 6:3, 9:3]
 		myMap[num] = i
 	}
 	return []int{}

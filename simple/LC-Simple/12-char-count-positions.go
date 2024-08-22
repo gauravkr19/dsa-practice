@@ -31,15 +31,19 @@ func main() {
 		// Trim any leading or trailing whitespaces
 		char = strings.TrimSpace(char)
 
-		// Update count
+		// This increments the count of the character char in the charCount map.
+		// If char is encountered for the first time, it will be automatically added to the map with a count of 1.
+		// If it already exists, its count will be incremented by 1.
 		charCount[char]++
 
-		// Update positions
+		// This appends the current position i of the character char to the slice in the charPositions map.
+		// If char is encountered for the first time, a new slice is created, and the position i is added to it.
+		// If it already exists, the position i is appended to the existing slice of positions.
 		charPositions[char] = append(charPositions[char], i)
 	}
 
-	fmt.Println(charCount)
-	fmt.Println(charPositions)
+	// fmt.Println(charCount)
+	// fmt.Println(charPositions)
 
 	// Print the results
 	for char, count := range charCount {
@@ -47,3 +51,7 @@ func main() {
 		fmt.Printf("%s : %d : %v\n", char, count, positions)
 	}
 }
+
+// A : 2 : 0,10
+
+// convert slice of integer to slice of string

@@ -25,7 +25,7 @@ func (s Solution) getElementsOnlyInFirstList(nums1 []int, nums2 []int) []int {
 		}
 	}
 
-	// Convert to slice.
+	// Convert to slice; move key from map to slice
 	result := []int{}
 	for num := range onlyInNums1 {
 		result = append(result, num)

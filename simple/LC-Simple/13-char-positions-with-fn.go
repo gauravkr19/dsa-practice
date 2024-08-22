@@ -2,28 +2,27 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 )
+
+// example
+// Input =  comma separated alphanumeric characters = A,c,f,4,6,j,1,0,1,c,A
 
 // CountAndPositions calculates the count and positions of each unique character in the input string.
 func CountAndPositions(input string) map[string][]int {
 	// Split the input into a slice of strings
 	characters := strings.Split(input, ",")
 
-	// Initialize a map to store the count and positions of each character
 	charPositions := make(map[string][]int)
 
-	// Iterate through the characters and update positions
 	for i, char := range characters {
-		// Trim any leading or trailing whitespaces
 		char = strings.TrimSpace(char)
 
-		// Update positions
+		// charPositions[char] = ... updates the map with the new slice containing the appended index.
 		charPositions[char] = append(charPositions[char], i)
+		// append(charPositions[char] - accesses the slice of indices associated with the  char.
 	}
-
-	fmt.Println(charPositions)
-	fmt.Println()
 
 	return charPositions
 }
@@ -38,7 +37,14 @@ func main() {
 	result := CountAndPositions(input)
 
 	// Print the results
-	for char, positions := range result {
-		fmt.Printf("%s : %d : %v\n", char, len(positions), positions)
+	for char, positions := range result { //positions is []int
+		// fmt.Printf("%s : %d : %v\n", char, len(positions), positions)
+
+		var csvElements []string
+		for _, element := range positions {
+			csvElements = append(csvElements, strconv.Itoa(element))
+		}
+		csvPositions := strings.Join(csvElements, ",")
+		fmt.Printf("%s : %d : %v\n", char, len(positions), csvPositions)
 	}
 }
