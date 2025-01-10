@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-func removeDupWords(str string) map[string]int {
+func wordCount(str string) map[string]int {
 
 	str = strings.TrimSpace(str)
 
@@ -26,7 +26,7 @@ func removeDupWords(str string) map[string]int {
 	return result
 }
 
-func removeDupChar(str string) map[string]int {
+func CharCount(str string) map[string]int {
 	str = strings.TrimSpace(str)
 	result := make(map[string]int)
 
@@ -37,9 +37,9 @@ func removeDupChar(str string) map[string]int {
 }
 
 func main() {
-	fmt.Println(removeDupWords("    hello world hello word world "))
+	fmt.Println(wordCount("    hello world hello word world "))
 
-	fmt.Println(removeDupChar("  hello "))
+	fmt.Println(CharCount("  hello "))
 
 	// Write a Go function that takes a string as input and returns a map where the keys are the distinct characters in the string and the values are the number of times each character appears.
 

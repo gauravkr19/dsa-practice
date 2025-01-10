@@ -18,10 +18,11 @@ func kidsWithMaxmCandies(candies []int, extraCandies int) []bool {
 		}
 	}
 
-	// var result []bool - use append with this decalaration of result to incr slice size - wrong
+	// var result []bool - use append with this decalaration of result to incr slice size
 	result := make([]bool, len(candies))
 	for i, v := range candies {
 		result[i] = (v+extraCandies >= maxCandies)
+		// result = append(result, v+extraCandies >= maxCandies)  //  this works with nil slice initialization
 	}
 	return result
 }

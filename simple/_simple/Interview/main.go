@@ -1,3 +1,33 @@
+// Fundamental
+// 		Slices
+// 		strings
+// 		Sorting
+// 		Two Pointer
+// 		Stack
+// 		Linked List
+// 		Matrix
+// 		Simulation
+
+// Intermediate
+// 		Maps / Hash Table
+// 		Depth-First Search
+// 		Breadth-First Search
+// 		Tree
+// 		Binary Tree
+// 		Binary Search
+// 		Greedy
+// 		Math
+
+// Advanced
+// 		Dynamic Programming
+// 		Backtracking
+// 		Union Find
+// 		Divide and Conquer
+// 		Monotonic Stack
+// 		Data Stream
+// 		Trie
+// 		Topological Sort
+
 package main
 
 import (
@@ -9,7 +39,7 @@ func main() {
 	// str := "abcdef"
 	str := []byte("abcdef")
 
-	// strrune := []rune(str)
+	// strRune := []rune(str)
 	l := len(str)
 
 	for i := 0; i < l/2; i++ {

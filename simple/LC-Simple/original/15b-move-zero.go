@@ -2,6 +2,13 @@ package main
 
 import "fmt"
 
+// nums = []int{1, 0, 3, 0, 12}
+// i=0, num[0] = 1, Non-Zero element so swap with lastNonZeroFoundAt = 0. [1, 0, 3, 0, 12], lastNonZeroFoundAt++ = 1
+// i=1, num[1] = 0, Zero element so skip [1, 0, 3, 0, 12]
+// i=2, num[2] = 1, Non-Zero element so swap with lastNonZeroFoundAt = 1. [1, 3, 0, 0, 12], lastNonZeroFoundAt++ = 2
+// i=3, num[3] = 0, Zero element so skip [1, 3, 0, 0, 12]
+// i=4, num[4] = 12, Non-Zero element so swap with lastNonZeroFoundAt = 2. lastNonZeroFoundAt++ = 3
+
 func moveZeroes(nums []int) []int {
 	lastNonZeroFoundAt := 0
 

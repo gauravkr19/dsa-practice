@@ -55,7 +55,26 @@ func canConstructRune(s1, s2 string) bool {
 	return true
 }
 
+func IsAnagram(s, t string) bool {
+
+	countMap := make(map[byte]int)
+
+	for i := 0; i < len(s); i++ {
+		countMap[s[i]]++
+	}
+
+	for i := 0; i < len(t); i++ {
+		countMap[t[i]]--
+		if countMap[t[i]] < 0 {
+			return false
+		}
+	}
+
+	return true
+}
+
 func main() {
 	fmt.Println(canConstructSlice("abcd", "baca"))
+	fmt.Println(canConstructRune("x", "baca"))
 	fmt.Println(canConstructRune("x", "baca"))
 }

@@ -61,5 +61,6 @@ func main() {
 
 	s2 := "paper"
 	t2 := "title"
-	fmt.Println(isIsomorphic(s2, t2)) // Output: true
+	fmt.Println(isIsomorphic(s2, t2))     // Output: true
+	fmt.Println(isIsomorphic("aa", "cc")) // Output: true
 }

@@ -59,6 +59,13 @@
 
 // After iterating through all the numbers, the longest sequence found is [1, 2, 3, 4] with a length of 4.
 // The function will return 4.
+
+// New Q: Also return the indices of all longest streak elements
+// startIndex := i
+// endIndex := i + currentStreak - 1
+// for j := startIndex; j <= endIndex; j++ {
+// 	longestIndices = append(longestIndices, j)
+
 package main
 
 import (

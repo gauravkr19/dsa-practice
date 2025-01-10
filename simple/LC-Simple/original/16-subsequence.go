@@ -10,7 +10,7 @@ import "fmt"
 // when using range ---> for i, s := range t Error: "invalid operation: cannot index s (variable of type rune)""
 func subsequence(s string, t string) bool {
 
-	sIndex := 0
+	sIndex := 0 // use sIndex to track the elements of slice s
 	for i := 0; i < len(t) && sIndex < len(s); i++ {
 
 		if t[i] == s[sIndex] {

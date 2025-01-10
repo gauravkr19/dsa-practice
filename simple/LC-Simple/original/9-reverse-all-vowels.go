@@ -22,7 +22,13 @@ func reverseVowels(str string) string {
 
 	// Use two pointers to swap vowels from the two ends towards the center
 	i, j := 0, len(characters)-1
+
+	// Outer loop is O(n) as each char is processed at most once
 	for i < j {
+
+		// inner loop skips non-vowel chars
+		// In the worst case (all non-vowel characters), the inner loops will also traverse the string once from both ends.
+		// This does not increase the time complexity beyond O(n), because the total work is proportional to the string length.
 		for i < j && !vowelSet[characters[i]] {
 			i++
 		}

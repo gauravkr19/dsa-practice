@@ -27,6 +27,7 @@ func isHappy(num int) bool {
 		if seen[num] {
 			return false
 		}
+
 		seen[num] = true
 		num = sumOfSquares(num)
 	}

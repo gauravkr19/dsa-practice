@@ -26,7 +26,7 @@ func elementSum(mySlice []int, target int) []int {
 
 	for i, num := range mySlice {
 		complement := target - num
-		if idx, found := myMap[complement]; found {
+		if idx, found := myMap[complement]; found { // idx is the value of the map myMap which stores the index counter
 			return []int{idx, i}
 		}
 		// create a myMap, map[4:0 6:2 9:1, 4:2, 6:3, 9:3]
