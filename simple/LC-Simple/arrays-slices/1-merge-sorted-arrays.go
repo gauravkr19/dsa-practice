@@ -28,7 +28,13 @@ func merge(nums1 []int, m int, nums2 []int, n int) { // no return required as de
 	}
 
 	// If there are remaining elements in nums2, copy them to nums1
-	// No need to copy remaining elements from nums1 as they are already in place
+	// end for loop also needed to take care of below edge cases.
+
+	// nums1 := []int{7, 0, 0, 0, 0, 0}
+	// m := 1
+	// nums2 := []int{4, 5, 6, 7, 8}
+	// n := 5
+
 	for p2 >= 0 {
 		nums1[p] = nums2[p2]
 		p--

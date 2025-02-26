@@ -30,7 +30,7 @@ func getDecimalValue(head *ListNode) int {
 }
 
 func main() {
-	// Example Linked List: 1 -> 0 -> 1 (Binary: 101) 1, 2+0=2, 2*2+1=5 = 1+0+4
+	// Example Linked List: 1 -> 0 -> 1 (Binary: 101) 1, 2+0=2, 2*2+1=5
 	head := &ListNode{Val: 1}
 	head.Next = &ListNode{Val: 0}
 	head.Next.Next = &ListNode{Val: 1}
