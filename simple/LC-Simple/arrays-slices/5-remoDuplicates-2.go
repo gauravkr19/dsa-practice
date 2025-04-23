@@ -8,37 +8,41 @@
 // Input: nums = [1,1,1,2,2,3]
 // Output: 5, nums = [1,1,2,2,3,_]
 
-// [1,1,1,2,2,3]
-// k = 1, i = 2, 1 != 1 || 1 != 1 false
-// k = 1, i = 3, 2 != 1 || 2 != 1 true => k++, k = 2,  [1,1,2,2,2,3]
-// k = 2, i = 4, 2 != 1 || 2 != 2, true
-// k = 3   [1,1,2,2,2,3]
-// k = 3, i = 5, 5 != 2
-// k = 4  [1,1,2,2,3,3]
+// [1, 1, 1, 2, 3, 3, 3]
+// i	num[i]	num[k-2]	Comparison (!=)	Action			k			num (mutated)
+// 2	1		1			false			skip			2			[1, 1, 1, 2, 3, 3, 3]
+// 3	2		1			true			num[2] = 2; k++	3			[1, 1, 2, 2, 3, 3, 3]
+// 4	3		1			true			num[3] = 3; k++	4			[1, 1, 2, 3, 3, 3, 3]
+// 5	3		2			true			num[4] = 3; k++	5			[1, 1, 2, 3, 3, 3, 3]
+// 6	3		3			false			skip			5			[1, 1, 2, 3, 3, 3, 3]
 
 package main
 
 import "fmt"
 
-func removeDuplicates(nums []int) int {
-	if len(nums) == 0 {
-		return 0
+func removeDuplicatesGeneral(nums []int, maxAllowed int) int {
+	if len(nums) <= maxAllowed {
+		return len(nums)
 	}
 
-	k := 1 // Start at the second element
+	k := maxAllowed // First `maxAllowed` elements are always valid
 
-	for i := 2; i < len(nums); i++ {
-		if nums[i] != nums[k-1] || nums[i] != nums[k] {
-			k++
+	for i := maxAllowed; i < len(nums); i++ {
+		// Compare current num with the num maxAllowed steps back
+		if nums[i] != nums[k-maxAllowed] {
 			nums[k] = nums[i]
+			k++
 		}
 	}
 
-	return k + 1
+	return k
 }
 
 func main() {
-	nums := []int{0, 0, 1, 1, 1, 1, 2, 3, 3}
-	k := removeDuplicates(nums)
+	nums := []int{0, 0, 1, 1, 1, 1, 1, 2, 3, 3, 3, 3}
+	// k := removeDuplicates(nums)
+	// fmt.Println(nums[:k])
+
+	k := removeDuplicatesGeneral(nums, 3)
 	fmt.Println(nums[:k])
 }

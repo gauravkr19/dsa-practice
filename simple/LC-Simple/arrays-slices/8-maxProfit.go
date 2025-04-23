@@ -15,6 +15,13 @@
 
 package main
 
+// It's a greedy approach:
+// You're greedily updating:
+// At each step:
+// > 	Check if today's price is a new minimum
+// >	Or calculate profit from selling today after buying at minPrice
+
+//  "Buy and Sell Stock II" version (multiple transactions allowed)??
 import "fmt"
 
 func maxProfit(prices []int) int {

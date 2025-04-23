@@ -41,3 +41,7 @@ func main() {
 	fmt.Println("The first", k, "unique elements are:", nums[:k])
 	fmt.Println("Length of the array after removing duplicates:", k)
 }
+
+// Code Output:
+// The first 5 unique elements are: [1 2 3 4 5]
+// Length of the array after removing duplicates: 5

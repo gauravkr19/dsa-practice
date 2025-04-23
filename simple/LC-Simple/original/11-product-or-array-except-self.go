@@ -1,5 +1,4 @@
-// Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums
-//  except nums[i].
+// Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
 // The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
 // You must write an algorithm that runs in O(n) time and without using the division operation.
 
@@ -12,6 +11,20 @@
 // 2. // Maximum Product Subarray
 // Comparing solutions like the two here will help reinforce differences.
 
+// Question: answer[i] = product of all nums[j] where j ≠ i
+// Brute force O(n^2)
+// for i in 0 to n:
+//     product = 1
+//     for j in 0 to n:
+//         if i != j:
+//             product *= nums[j]
+//     answer[i] = product
+// Instead of removing nums[i] from the total product (which would need division), build the answer from two sides:
+// 			From the left, accumulate product of everything before i	(prefix)
+//			From the right, accumulate product of everything after i	(suffix)
+// Then multiply both.
+// answer[i] = product of all elements before i * product of all elements after i
+
 package main
 
 import "fmt"
@@ -20,41 +33,30 @@ func productExceptSelf2(nums []int) []int {
 	n := len(nums)
 	answer := make([]int, n)
 
-	// nums = [1,2,3,4]
-	// Step 1: Calculate prefix products , 	// Answer with Prefix: answer= [1 1 2 6]
-	// answer[0] = 				Prefix = 1
-	// Prefix = Prefix * nums[0] = 1*1 = 1
-	// answer[1] = Prefix = 1
-	// Prefix = Prefix * nums[1] = 1*2 = 2
-	// answer[2] = Prefix = 2
-	// Prefix = Prefix * nums[2] = 2*3 = 6
-	// answer[3] = Prefix = 6
-	// Prefix = Prefix * nums[3] = 6*4 = 24
+	// nums = [1,2,3,4],  answer = [1, 1, 2, 6]
+	// i=0: prefix=1         => answer[0] = 1
+	// i=1: prefix=1*nums[0] => answer[1] = 1
+	// i=2: prefix=1*2       => answer[2] = 2
+	// i=3: prefix=2*3       => answer[3] = 6
 
 	// Step 1: Calculate prefix product
 	prefix := 1
 	for i := 0; i < n; i++ {
-		answer[i] = prefix
-		prefix *= nums[i] // prefix = prefix * num[i]
+		answer[i] = prefix // store product of all to the left
+		prefix *= nums[i]  // update prefix for next index
 	}
 
 	// Step 2: Calculate suffix products and multiply with prefix products
 	suffix := 1
 	for i := n - 1; i >= 0; i-- {
-		answer[i] *= suffix // answer[i] = answer[i] * suffix
-		suffix *= nums[i]   // suffix = suffix * num[i]
+		answer[i] *= suffix // multiply with product of all to the right
+		suffix *= nums[i]   // update suffix for next index (backward)
 	}
-	// Input = nums= []int{1, 2, 3, 4}
-	// Answer with Prefix: answer= [1 1 2 6]
-	// Now: Suffix part
-	// answer[3] = answer[3] * suffix = 	6*1=6
-	// suffix = suffix * nums[3] = 1*4=4
-	// answer[2] = answer[2] * suffix = 	2*4=8
-	// suffix = suffix * nums[2] = 4*3=12
-	// answer[1] = answer[1] * suffix = 	1*12 = 12
-	// suffix = suffix * nums[1] = 	12*2=24
-	// answer[0] = answer[0] * suffix = 	1*24 = 24
-	// suffix = suffix * nums[0] = 24*1=24
+	// i=3: suffix = 1           => answer[3] *= 1        => 6
+	// i=2: suffix = 1*4 = 4     => answer[2] *= 4        => 8
+	// i=1: suffix = 4*3 = 12    => answer[1] *= 12       => 12
+	// i=0: suffix = 12*2 = 24   => answer[0] *= 24       => 24
+
 	return answer
 }
 

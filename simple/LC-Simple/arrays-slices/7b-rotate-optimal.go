@@ -7,13 +7,15 @@ package main
 
 import "fmt"
 
+// Total work done = O(n) + O(k) + O(n-k) = O(2n) = O(n)
+// It uses a fixed number of variables (start, end, temporary swap variable), so auxiliary space = O(1)
 func rotate(nums []int, k int) {
 	n := len(nums)
 	k = k % n // Normalize k to be within the array length
 
-	reverse(nums, 0, n-1) // Reverse the entire array
-	reverse(nums, 0, k-1) // Reverse the first k elements
-	reverse(nums, k, n-1) // Reverse the remaining elements
+	reverse(nums, 0, n-1) // Reverse the entire array → O(n)
+	reverse(nums, 0, k-1) // Reverse the first k elements → O(k)
+	reverse(nums, k, n-1) // Reverse the remaining elements → O(n-k)
 }
 
 func reverse(nums []int, start, end int) {

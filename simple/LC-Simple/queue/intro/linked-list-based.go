@@ -16,7 +16,7 @@ type Node struct {
 type LinkedListQueue struct {
 	front *Node
 	rear  *Node
-	size  int
+	size  int // tracks the count of elements
 }
 
 // Enqueue - Adds an element at the rear

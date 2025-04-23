@@ -9,6 +9,12 @@
 // Explanation: Your function should return k = 2, with the first two elements of nums being 2.
 // It does not matter what you leave beyond the returned k (hence they are underscores).
 
+// **General Pattern to Remember (Template)**
+// >	Initialize a write pointer (k) to the first valid write position (often 0 or 1)
+// >	Loop with a read pointer (i) to go through the array
+// >	At each i, check if current element is valid (unique, or not to be removed, or allowed duplicate)
+// >	If yes, write to nums[k] and increment k
+
 package main
 
 import (

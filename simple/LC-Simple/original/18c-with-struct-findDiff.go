@@ -38,7 +38,8 @@ func (nc NumComparator) findDifference() [][]int {
 func main() {
 	comparator := NumComparator{
 		nums1: []int{1, 2, 3},
-		nums2: []int{2, 4, 6}}
+		nums2: []int{2, 4, 6},
+	}
 
 	fmt.Println(comparator.findDifference()) // Output: [[1 3] [4 6]]
 

@@ -27,6 +27,9 @@ func CountAndPositions(input string) map[string][]int {
 	return charPositions
 }
 
+// Expected Output:
+// A : 2 : 0,10
+
 func main() {
 	// Get input from the user
 	fmt.Print("Enter comma-separated alphanumeric characters (15-20): ")
